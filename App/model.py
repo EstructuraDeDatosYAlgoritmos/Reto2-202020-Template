@@ -20,9 +20,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  """
 import config
+import csv
 from DISClib.ADT import list as lt
 from DISClib.ADT import map as mp
 from DISClib.DataStructures import mapentry as me
+from time import process_time
 assert config
 
 """
@@ -39,6 +41,22 @@ es decir contiene los modelos con los datos en memoria
 
 # Funciones para agregar informacion al catalogo
 
+def loadCSVFile (file, cmpfunction):
+    t1_start = process_time()
+    lst=lt.newList("ARRAY_LIST", compareRecordIds)
+    dialect = csv.excel()
+    dialect.delimiter=";"
+    try:
+        with open(cf.data_dir + file, encoding="utf-8-sig") as csvfile:
+            row = csv.DictReader(csvfile, dialect=dialect)
+            for elemento in row: 
+                lt.addLast(lst,elemento)
+    except:
+        print("Hubo un error con la carga del archivo")
+        
+    t1_stop = process_time()  #tiempo final
+    print("Tiempo de ejecución ",t1_stop-t1_start," segundos")
+    return lst
 
 
 # ==============================
@@ -50,5 +68,10 @@ es decir contiene los modelos con los datos en memoria
 # ==============================
 # Funciones de Comparacion
 # ==============================
-
+def compareRecordIds (recordA, recordB):
+    if int(recordA['id']) == int(recordB['id']):
+        return 0
+    elif int(recordA['id']) > int(recordB['id']):
+        return 1
+    return -1
 

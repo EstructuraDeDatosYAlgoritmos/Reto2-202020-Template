@@ -48,8 +48,28 @@ operación seleccionada.
 #  el controlador.
 # ___________________________________________________
 
-
+def printMainMenu () ->None:
+    print('\nMenu Principal\n')
+    print('1. Cargar Archivos')
+    print('0. Salir')
 
 # ___________________________________________________
 #  Menu principal
 # ___________________________________________________
+
+def Main () ->None:
+    Data = False
+    while True:
+        printMainMenu()
+        seleccion = input('Seleccione una opción')
+        if len(inputs)>0 and (data or int(inputs[0])<=1):
+            if int(seleccion[0]) == 1:
+                print('Cargando archivos')
+                
+                Data = True
+            elif int(seleccion[0]) == 0:
+                sys.exit(0)
+        else:
+            print('Opción no valida')
+            
+            
