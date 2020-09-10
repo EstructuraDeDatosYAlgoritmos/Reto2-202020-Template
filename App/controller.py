@@ -23,7 +23,7 @@
 import config as cf
 from App import model
 import csv
-
+from DISClib.ADT import list as lt
 
 """
 El controlador se encarga de mediar entre la vista y el modelo.
@@ -44,3 +44,13 @@ recae sobre el controlador.
 #  Funciones para la carga de datos y almacenamiento
 #  de datos en los modelos
 # ___________________________________________________
+
+def loadMoviesDetails ():
+    lstmoviesdetails = model.loadCSVFile("Data/AllMoviesDetailsCleaned.csv",model.compareRecordIds) 
+    print("Datos cargados, " + str(lt.size(lstmoviesdetails)) + " elementos cargados")
+    return lstmoviesdetails
+
+def loadMoviesCasting ():
+    lstmoviescasting = model.loadCSVFile("Data/AllMoviesCastingRaw.csv",model.compareRecordIds) 
+    print("Datos cargados, " + str(lt.size(lstmoviescasting)) + " elementos cargados")
+    return lstmoviescasting
