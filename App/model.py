@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  """
-import config
+import config 
 import csv
 from DISClib.ADT import list as lt
 from DISClib.ADT import map as mp
@@ -47,7 +47,7 @@ def loadCSVFile (file, cmpfunction):
     dialect = csv.excel()
     dialect.delimiter=";"
     try:
-        with open(cf.data_dir + file, encoding="utf-8-sig") as csvfile:
+        with open(config.data_dir + file, encoding="utf-8-sig") as csvfile:
             row = csv.DictReader(csvfile, dialect=dialect)
             for elemento in row: 
                 lt.addLast(lst,elemento)
@@ -57,6 +57,7 @@ def loadCSVFile (file, cmpfunction):
     t1_stop = process_time()  #tiempo final
     print("Tiempo de ejecución ",t1_stop-t1_start," segundos")
     return lst
+
 
 
 # ==============================
